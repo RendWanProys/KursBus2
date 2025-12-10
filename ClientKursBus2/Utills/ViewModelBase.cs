@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ClientKursBus2.Utils
+namespace ClientKursBus2.Utills
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

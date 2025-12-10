@@ -5,7 +5,7 @@
     <DataTemplate DataType="{x:Type vm:HomeViewModel}">
         <view:HomeView/>
     </DataTemplate>
-    <!--<DataTemplate DataType="{x:Type vm:ChitateliViewModel}">-->
-        <!--<view:ChitateliView/>-->
+    <DataTemplate DataType="{x:Type vm:RaceViewModel}">
+        <view:RaceView/>
     </DataTemplate>
 </ResourceDictionary>

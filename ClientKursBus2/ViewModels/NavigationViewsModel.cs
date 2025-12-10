@@ -1,5 +1,5 @@
-﻿//using KursClient.Utills;
-//using KursProjectISP31.Utills;
+﻿using ClientKursBus2.Utills;
+using KursProject.Utills;
 
 using System;
 using System.Collections.Generic;
@@ -19,13 +19,13 @@ namespace ClientKursBus2.ViewModels
             set { _currentView = value; OnPropertyChanged(); }
         }
         public ICommand HomeCommand { get; set; }
-        public ICommand ChitateliCommand { get; set; }
+        public ICommand RaceCommand { get; set; }
         private void HomeView(object obj) => CurrentView = new HomeViewModel();
-        private void ChitateliView(object obj) => CurrentView = new ChitateliViewModel();
+        private void RaceView(object obj) => CurrentView = new RaceViewModel();
         public NavigationViewModel()
         {
             HomeCommand = new RelayCommand(HomeView);
-            ChitateliCommand = new RelayCommand(ChitateliView);
+            RaceCommand = new RelayCommand(RaceView);
             CurrentView = new HomeViewModel();
         }
     }

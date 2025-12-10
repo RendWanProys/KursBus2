@@ -1,4 +1,10 @@
-﻿using System;
+﻿using ClientKursBus2.Models;
+using ClientKursBus2.Services;
+using ClientKursBus2.Utills;
+using ClientKursBus2.Views;
+using KursProject.Utills;
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,23 +16,23 @@ namespace ClientKursBus2.ViewModels
 {
     class RaceViewModel:ViewModelBase
     {
-        private ChitateliService chitateliService;
-        private ObservableCollection<Chitateli> chitateliList;
-        public ObservableCollection<Chitateli> ChitateliList
+        private RaceService raceService;
+        private ObservableCollection<Race> raceList;
+        public ObservableCollection<Race> RaceList
         {
-            get { return chitateliList; }
+            get { return raceList; }
             set
             {
-                if (chitateliList != value)
+                if (raceList != value)
                 {
-                    chitateliList = value;
-                    OnPropertyChanged(nameof(ChitateliList));
+                    raceList = value;
+                    OnPropertyChanged(nameof(RaceList));
                 }
             }
         }
 
-        private Chitateli selected;
-        public Chitateli Selected
+        private Race selected;
+        public Race Selected
         {
             get { return selected; }
             set
@@ -35,18 +41,18 @@ namespace ClientKursBus2.ViewModels
                 OnPropertyChanged(nameof(Selected));
             }
         }
-        public ChitateliViewModel()
+        public RaceViewModel()
         {
-            chitateliService = new ChitateliService();
+            raceService = new RaceService();
             Load();
         }
         private void Load()
         {
             try
             {
-                ChitateliList = null!;
-                Task<List<Chitateli>> task = Task.Run(() => chitateliService.GetAll());
-                ChitateliList = new ObservableCollection<Chitateli>(task.Result);
+                RaceList = null!;
+                Task<List<Race>> task = Task.Run(() => raceService.GetAll());
+                RaceList = new ObservableCollection<Race>(task.Result);
             }
             catch (Exception ex)
             {
@@ -63,10 +69,10 @@ namespace ClientKursBus2.ViewModels
                   {
                       try
                       {
-                          AddEditChitatel window = new AddEditChitatel(new Chitateli());
+                          AddEditRace window = new AddEditRace(new Race());
                           if (window.ShowDialog() == true)
                           {
-                              await chitateliService.Add(window.Chitatel);
+                              await raceService.Add(window.Chitatel);
                               Load();
                           }
                       }
@@ -82,11 +88,11 @@ namespace ClientKursBus2.ViewModels
                 return editCommand ??
                   (editCommand = new RelayCommand(async obj =>
                   {
-                      Chitateli chitatel = (obj as Chitateli)!;
-                      AddEditChitatel window = new AddEditChitatel(chitatel);
+                      Race chitatel = (obj as Race)!;
+                      AddEditRace window = new AddEditRace(chitatel);
                       if (window.ShowDialog() == true)
                       {
-                          await chitateliService.Update(window.Chitatel);
+                          await raceService.Update(window.Chitatel);
                       }
                   }));
             }
@@ -99,11 +105,11 @@ namespace ClientKursBus2.ViewModels
                 return deleteCommand ??
                   (deleteCommand = new RelayCommand(async obj =>
                   {
-                      Chitateli chitatel = (obj as Chitateli)!;
+                      Race chitatel = (obj as Race)!;
                       MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить объект " + chitatel!.FirstName + " " + chitatel.LastName, "Удаление объекта", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                       if (result == MessageBoxResult.Yes)
                       {
-                          await chitateliService.Delete(chitatel);
+                          await raceService.Delete(chitatel);
                           Load();
                       }
                   }));

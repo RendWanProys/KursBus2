@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ClientKursBus2.Utils
+namespace KursProject.Utills
 {
     public class RelayCommand : ICommand
     {

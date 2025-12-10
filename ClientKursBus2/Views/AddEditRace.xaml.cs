@@ -1,0 +1,41 @@
+﻿using KursClient.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace KursClient.Views
+{
+    /// <summary>
+    /// Логика взаимодействия для AddEditChitatel.xaml
+    /// </summary>
+    public partial class AddEditChitatel : Window
+    {
+        public Chitateli Chitatel { get;  private set; }
+        public AddEditChitatel(Chitateli _chitateli)
+        {
+            InitializeComponent();
+            Chitatel = _chitateli;
+            DataContext = Chitatel;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            DialogResult= false;
+        }
+    }
+}

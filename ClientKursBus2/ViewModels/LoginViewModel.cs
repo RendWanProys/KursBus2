@@ -1,8 +1,8 @@
-﻿//using KursClient.Models;
-//using KursClient.Services;
-//using KursClient.Utills;
-//using KursClient.Views;
-//using KursProjectISP31.Utills;
+﻿using ClientKursBus2.Models;
+using ClientKursBus2.Services;
+using ClientKursBus2.Utills;
+using ClientKursBus2.Views;
+using KursProject.Utills;
 
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ using System.Windows.Controls;
 
 namespace ClientKursBus2.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel:ViewModelBase
     {
         private AuthService authService;
 
@@ -67,7 +67,7 @@ namespace ClientKursBus2.ViewModels
                   {
                       PasswordBox? password = obj as PasswordBox;
                       HttpClient client = new HttpClient();
-                      Person user = new Person { Email = Login, Password = password!.Password };
+                      UserData user = new UserData { Email = Login, PassWord = password!.Password };
                       Response response = await authService.SignIn(user);
                       if (response != null)
                       {

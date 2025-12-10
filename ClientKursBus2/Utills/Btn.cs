@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ClientKursBus2.Utils
+namespace ClientKursBus2.Utills
 {
     class Btn : RadioButton
     {
