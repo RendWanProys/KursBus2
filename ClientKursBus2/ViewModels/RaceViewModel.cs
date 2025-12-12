@@ -2,8 +2,7 @@
 using ClientKursBus2.Services;
 using ClientKursBus2.Utills;
 using ClientKursBus2.Views;
-using KursProject.Utills;
-
+using ClientKursBus.Utills;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -72,7 +71,7 @@ namespace ClientKursBus2.ViewModels
                           AddEditRace window = new AddEditRace(new Race());
                           if (window.ShowDialog() == true)
                           {
-                              await raceService.Add(window.Chitatel);
+                              await raceService.Add(window.Races);
                               Load();
                           }
                       }
@@ -88,11 +87,11 @@ namespace ClientKursBus2.ViewModels
                 return editCommand ??
                   (editCommand = new RelayCommand(async obj =>
                   {
-                      Race chitatel = (obj as Race)!;
-                      AddEditRace window = new AddEditRace(chitatel);
+                      Race race = (obj as Race)!;
+                      AddEditRace window = new AddEditRace(race);
                       if (window.ShowDialog() == true)
                       {
-                          await raceService.Update(window.Chitatel);
+                          await raceService.Update(window.Races);
                       }
                   }));
             }
@@ -105,11 +104,11 @@ namespace ClientKursBus2.ViewModels
                 return deleteCommand ??
                   (deleteCommand = new RelayCommand(async obj =>
                   {
-                      Race chitatel = (obj as Race)!;
-                      MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить объект " + chitatel!.FirstName + " " + chitatel.LastName, "Удаление объекта", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                      Race race = (obj as Race)!;
+                      MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить объект " + race!.Load + " " + race.Pass, "Удаление объекта", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                       if (result == MessageBoxResult.Yes)
                       {
-                          await raceService.Delete(chitatel);
+                          await raceService.Delete(race);
                           Load();
                       }
                   }));

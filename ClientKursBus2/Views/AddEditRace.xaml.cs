@@ -1,4 +1,4 @@
-﻿using KursClient.Models;
+﻿using ClientKursBus2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace KursClient.Views
+namespace ClientKursBus2.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для AddEditChitatel.xaml
-    /// </summary>
-    public partial class AddEditChitatel : Window
+    public partial class AddEditRace : Window
     {
-        public Chitateli Chitatel { get;  private set; }
-        public AddEditChitatel(Chitateli _chitateli)
+        public Race Races { get;  private set; }
+        public AddEditRace(Race _race)
         {
             InitializeComponent();
-            Chitatel = _chitateli;
-            DataContext = Chitatel;
+            Races = _race;
+            DataContext = Races;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

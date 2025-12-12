@@ -8,8 +8,11 @@ using System.Windows.Controls;
 
 namespace ClientKursBus2.Utills
 {
-    class Btn : RadioButton
+    public class Btn : RadioButton
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(Btn), new FrameworkPropertyMetadata(typeof(Btn)));
+        static Btn()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Btn), new FrameworkPropertyMetadata(typeof(Btn)));
+        }
     }
 }

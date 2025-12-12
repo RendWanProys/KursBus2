@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ClientKursBus2.Views
 {
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для HomeView.xaml
+    /// </summary>
+    public partial class HomeView : UserControl
     {
-        public MainWindow()
+        public HomeView()
         {
             InitializeComponent();
-        }
-        private void CloseApp_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-            LoginWindow.Instance.Close();
         }
     }
 }

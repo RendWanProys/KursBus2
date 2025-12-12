@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace ClientKursBus2.Views
 {
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-    public partial class MainWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для RaceView.xaml
+    /// </summary>
+    public partial class RaceView : UserControl
     {
-        public MainWindow()
+        public RaceView()
         {
             InitializeComponent();
-        }
-        private void CloseApp_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-            LoginWindow.Instance.Close();
         }
     }
 }

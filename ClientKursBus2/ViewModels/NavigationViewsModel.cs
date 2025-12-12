@@ -1,5 +1,5 @@
 ﻿using ClientKursBus2.Utills;
-using KursProject.Utills;
+using ClientKursBus.Utills;
 
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Windows.Input;
 namespace ClientKursBus2.ViewModels
 {
     public class NavigationViewModel : ViewModelBase
-    {
+    {               
         private object _currentView;
         public object CurrentView
         {

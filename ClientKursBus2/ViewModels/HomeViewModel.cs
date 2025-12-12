@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClientKursBus2.ViewModels
 {
-    class HomeViewsModel
+    class HomeViewModel
     {
     }
 }

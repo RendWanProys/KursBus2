@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClientKursBus2.Models;
+using ClientKursBus2.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +20,29 @@ namespace ClientKursBus2.Views
     /// <summary>
     /// Логика взаимодействия для RegisterWindow.xaml
     /// </summary>
-    public partial class RegisterWindow : Page
+    public partial class RegisterWindow : Window
     {
+        private AuthService authService;
+
         public RegisterWindow()
         {
             InitializeComponent();
+            authService = new AuthService();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Password.Password == PasswordRepeat.Password)
+            {
+                UserData userdata = new UserData { Email = Login.Text, PassWord = Password.Password };
+                Task<string> message = Task.Run(() => Register(userdata));
+                MessageBox.Show(message.Result);
+                this.Close();
+            }
+        }
+        private async Task<string> Register(UserData userdata)
+        {
+            return await authService.Register(userdata);
         }
     }
 }

@@ -2,7 +2,7 @@
 using ClientKursBus2.Services;
 using ClientKursBus2.Utills;
 using ClientKursBus2.Views;
-using KursProject.Utills;
+using ClientKursBus.Utills;
 
 using System;
 using System.Collections.Generic;
