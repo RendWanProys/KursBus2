@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ClientKursBus2.Models;
-
-public partial class UserData
+namespace ClientKursBus2.Models
 {
-    public string? Email { get; set; }
 
-    public string? PassWord { get; set; }
+    public partial class UserData
+    {
+        public string? Email { get; set; }
 
-    public int UserId { get; set; }
+        public string? PassWord { get; set; }
 
-    public string? UserName { get; set; }
+        public int UserId { get; set; }
+
+        public string? UserName { get; set; }
+    }
 }

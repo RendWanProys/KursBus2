@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ClientKursBus2
+namespace ClientKursBus2.Views
 {
     /// <summary>
     /// Логика взаимодействия для LoginWindow.xaml
