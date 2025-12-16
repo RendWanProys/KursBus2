@@ -2,17 +2,46 @@ using KursBus2.Models;
 using KursBus2.Services;
 using KursBus2.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Simple Test API", Version = "v1" });
+    options.AddSecurityDefinition("JWT_OR_COOKIE", new OpenApiSecurityScheme()
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter a valid token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = JwtBearerDefaults.AuthenticationScheme
+    });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+        {
+            {
+                new OpenApiSecurityScheme()
+                {
+                    Reference = new OpenApiReference()
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id=JwtBearerDefaults.AuthenticationScheme
+                    }
+                },
+                new string[]{}
+            }
+        });
+});
+
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 builder.Services.AddDbContext<KursProjectContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddScoped<RaceService, RaceService>();
@@ -42,7 +71,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapPost("/login", async (UserData user, KursProjectContext db) =>
 {
-    UserData? person = await db.UserData!.FirstOrDefaultAsync(p => p.Email == user.Email);
+    UserData? person = await db.UserDatas!.FirstOrDefaultAsync(p => p.Email == user.Email);
     string Password = AuthOptions.GetHash(user.PassWord);
     if (person is null) return Results.Unauthorized();
     if (person.PassWord != Password) return Results.Unauthorized();
@@ -66,9 +95,9 @@ app.MapPost("/login", async (UserData user, KursProjectContext db) =>
 app.MapPost("/register", async (UserData user, KursProjectContext db) =>
 {
     user.PassWord = AuthOptions.GetHash(user.PassWord);
-    db.UserData.Add(user);
+    db.UserDatas.Add(user);
     await db.SaveChangesAsync();
-    UserData createdUser = db.UserData.FirstOrDefault(p => p.Email == user.Email)!;
+    UserData createdUser = db.UserDatas.FirstOrDefault(p => p.Email == user.Email)!;
     return Results.Ok(createdUser);
 });
 var context = app.Services.CreateScope().ServiceProvider.

@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace ClientKursBus2.Services
 {
-    class AuthService
+    public class AuthService
     {
         private HttpClient client = new HttpClient();
         public async Task<String> Register(UserData person)
         {
             JsonContent content = JsonContent.Create(person);
-            using var response = await client.PostAsync("https://localhost:7229/register", content);
+            using var response = await client.PostAsync("https://localhost:7114/register", content);
             string responseText = await response.Content.ReadAsStringAsync();
             if (responseText != "")
             {
@@ -27,7 +27,7 @@ namespace ClientKursBus2.Services
         public async Task<Response> SignIn(UserData person)
         {
             JsonContent content = JsonContent.Create(person);
-            using var response = await client.PostAsync("https://localhost:7229/login", content);
+            using var response = await client.PostAsync("https://localhost:7114/login", content);
             string responseText = await response.Content.ReadAsStringAsync();
             if (responseText != "")
             {

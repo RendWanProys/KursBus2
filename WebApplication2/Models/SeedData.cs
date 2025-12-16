@@ -7,14 +7,14 @@ namespace KursBus2.Models
     {
         public static void SeedDatabase(KursProjectContext context)
         {
-            context.Database.Migrate();
-            if (context.UserData.Count() == 0)
-            {
-                UserData user = new UserData { Email = "admin@mail.ru", PassWord = "1234" };
-                user.PassWord = AuthOptions.GetHash(user.PassWord);
-                context.UserData.Add(user);
-                context.SaveChanges();
-            }
+            //context.Database.Migrate();
+            //if (context.UserDatas.Count() == 0)
+            //{
+            //    UserData user = new UserData { Email = "admin@mail.ru", PassWord = "1234" };
+            //    user.PassWord = AuthOptions.GetHash(user.PassWord);
+            //    context.UserData.Add(user);
+            //    context.SaveChanges();
+            //}
         }
     }
 }

@@ -25,7 +25,7 @@ namespace ClientKursBus2.Services
             try
             {
                 JsonContent content = JsonContent.Create(obj);
-                using var response = await httpClient.PostAsync("https://localhost:7229/api/Chitateli", content);
+                using var response = await httpClient.PostAsync("https://localhost:7114/api/Race", content);
                 string responseText = await response.Content.ReadAsStringAsync();
                 if (responseText != null)
                 {
@@ -38,13 +38,13 @@ namespace ClientKursBus2.Services
 
         public override async Task Delete(Race obj)
         {
-            using var response = await httpClient.DeleteAsync($"https://localhost:7229/api/Chitateli/{obj.RaceId}");
+            using var response = await httpClient.DeleteAsync($"https://localhost:7114/api/Race/{obj.RaceId}");
 
         }
 
         public override async Task<List<Race>> GetAll()
         {
-            return (await httpClient.GetFromJsonAsync<List<Race>>("https://localhost:7229/api/Chitateli"))!;
+            return (await httpClient.GetFromJsonAsync<List<Race>>("https://localhost:7114/api/Race"))!;
         }
 
 
@@ -58,7 +58,7 @@ namespace ClientKursBus2.Services
             try
             {
                 JsonContent content = JsonContent.Create(obj);
-                using var response = await httpClient.PutAsync($"https://localhost:7229/api/Chitateli/{obj.RaceId}", content);
+                using var response = await httpClient.PutAsync($"https://localhost:7114/api/Race/{obj.RaceId}", content);
                 string responseText = await response.Content.ReadAsStringAsync();
                 if (responseText != null)
                 {
