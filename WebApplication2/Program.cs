@@ -71,10 +71,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapPost("/login", async (UserData user, KursProjectContext db) =>
 {
-    UserData? person = await db.UserDatas!.FirstOrDefaultAsync(p => p.Email == user.Email);
+    UserData? userdata = await db.UserDates!.FirstOrDefaultAsync(p => p.Email == user.Email);
     string Password = AuthOptions.GetHash(user.PassWord);
-    if (person is null) return Results.Unauthorized();
-    if (person.PassWord != Password) return Results.Unauthorized();
+    if (userdata is null) return Results.Unauthorized();
+    if (userdata.PassWord != Password) return Results.Unauthorized();
     var claims = new List<Claim> { new Claim(ClaimTypes.Email, user.Email) };
     var jwt = new JwtSecurityToken
     (
@@ -87,7 +87,7 @@ app.MapPost("/login", async (UserData user, KursProjectContext db) =>
     var response = new
     {
         access_token = encoderJWT,
-        username = person.Email
+        username = userdata.Email
     };
     return Results.Json(response);
 }
@@ -95,9 +95,9 @@ app.MapPost("/login", async (UserData user, KursProjectContext db) =>
 app.MapPost("/register", async (UserData user, KursProjectContext db) =>
 {
     user.PassWord = AuthOptions.GetHash(user.PassWord);
-    db.UserDatas.Add(user);
+    db.UserDates.Add(user);
     await db.SaveChangesAsync();
-    UserData createdUser = db.UserDatas.FirstOrDefault(p => p.Email == user.Email)!;
+    UserData createdUser = db.UserDates.FirstOrDefault(p => p.Email == user.Email)!;
     return Results.Ok(createdUser);
 });
 var context = app.Services.CreateScope().ServiceProvider.

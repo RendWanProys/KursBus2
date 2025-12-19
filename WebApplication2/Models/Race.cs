@@ -15,7 +15,5 @@ public partial class Race
 
     public int? Circulation { get; set; }
 
-    public int UserId { get; set; }
-
     public int TripId { get; set; }
 }

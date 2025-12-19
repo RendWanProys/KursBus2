@@ -18,25 +18,25 @@ namespace KursBus2.Controllers
             this.RaceService = service;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Race>>> GetAllChitatels()
+        public async Task<ActionResult<IEnumerable<Race>>> GetAllRaces()
         {
             return Ok(await RaceService.GetAll());
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<Race>> GetChitatelById(int id)
+        public async Task<ActionResult<Race>> GetRaceById(int id)
         {
             var chit = await RaceService.GetById(id);
             if (chit == null) return NotFound();
             return Ok(chit);
         }
         [HttpPost]
-        public async Task<ActionResult<Race>> CreateChitatel([FromBody] Race chit)
+        public async Task<ActionResult<Race>> CreateRace([FromBody] Race chit)
         {
             await RaceService.Create(chit);
-            return CreatedAtAction(nameof(GetChitatelById), new { Id = chit.RaceId }, chit);
+            return CreatedAtAction(nameof(GetRaceById), new { Id = chit.RaceId }, chit);
         }
         [HttpPut("{id}")]
-        public async Task<ActionResult<Race>> UpdateChitatel(int id, [FromBody] Race chit)
+        public async Task<ActionResult<Race>> UpdateRace(int id, [FromBody] Race chit)
         {
             if (chit.RaceId != id) return BadRequest();
             await RaceService.Update(chit);

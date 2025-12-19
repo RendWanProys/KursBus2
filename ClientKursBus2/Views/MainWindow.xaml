@@ -38,14 +38,25 @@
                                        Style="{StaticResource Text_Style}" />
                         </Grid>
                     </Menu:Btn>
-                    <!--// Chitateli //-->
+                    <!--// Schedule //-->
+                    <Menu:Btn Style="{StaticResource BtnStyle}"
+                              Command="{Binding ScheduleCommand}"
+                              IsChecked="True">
+                        <Grid>
+                            <Image Source="/Assets/img_home.png"
+                                   Style="{StaticResource Image_Style}" />
+                            <TextBlock Text="Расписание"
+                                       Style="{StaticResource Text_Style}" />
+                        </Grid>
+                    </Menu:Btn>
+                    <!--// Race //-->
                     <Menu:Btn Style="{StaticResource BtnStyle}"
               Command="{Binding RaceCommand}"
               IsChecked="False">
                         <Grid>
                             <Image Source="/Assets/book-open.png"
                    Style="{StaticResource Image_Style}" />
-                            <TextBlock Text="Читатели"
+                            <TextBlock Text="Рейсы"
                        Style="{StaticResource Text_Style}" />
                         </Grid>
                     </Menu:Btn>

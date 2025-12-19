@@ -15,13 +15,11 @@ public partial class KursProjectContext : DbContext
     {
     }
 
-    public virtual DbSet<BusTable> BusTables { get; set; }
-
     public virtual DbSet<Race> Races { get; set; }
 
     public virtual DbSet<Schedule> Schedules { get; set; }
 
-    public virtual DbSet<UserData> UserDatas { get; set; }
+    public virtual DbSet<UserData> UserDates { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -29,17 +27,6 @@ public partial class KursProjectContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<BusTable>(entity =>
-        {
-            entity.HasKey(e => e.BusId).HasName("BusTable_PK");
-
-            entity.ToTable("BusTable");
-
-            entity.Property(e => e.BusId).ValueGeneratedNever();
-            entity.Property(e => e.BusName)
-                .HasMaxLength(100)
-                .IsUnicode(false);
-        });
 
         modelBuilder.Entity<Race>(entity =>
         {
@@ -69,18 +56,16 @@ public partial class KursProjectContext : DbContext
 
         modelBuilder.Entity<UserData>(entity =>
         {
+            entity.ToTable("UserData");
             entity.HasKey(e => e.UserId).HasName("UserData_PK");
 
             entity.HasIndex(e => e.Email, "3_Email_IDX");
 
-            entity.Property(e => e.UserId).ValueGeneratedNever();
+            //entity.Property(e => e.UserId).ValueGeneratedNever();
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.PassWord).HasColumnType("text");
-            entity.Property(e => e.UserName)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+            entity.Property(e => e.PassWord).HasColumnType("varchar(max)");
         });
 
         OnModelCreatingPartial(modelBuilder);
