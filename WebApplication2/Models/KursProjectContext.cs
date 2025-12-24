@@ -8,11 +8,13 @@ public partial class KursProjectContext : DbContext
 {
     public KursProjectContext()
     {
+        Database.EnsureCreated();
     }
 
     public KursProjectContext(DbContextOptions<KursProjectContext> options)
         : base(options)
     {
+        Database.EnsureCreated();
     }
 
     public virtual DbSet<Race> Races { get; set; }
@@ -34,7 +36,7 @@ public partial class KursProjectContext : DbContext
 
             entity.ToTable("Race");
 
-            entity.Property(e => e.RaceId).ValueGeneratedNever();
+            entity.Property(e => e.RaceId).ValueGeneratedOnAdd();
             entity.Property(e => e.Pass)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -61,7 +63,7 @@ public partial class KursProjectContext : DbContext
 
             entity.HasIndex(e => e.Email, "3_Email_IDX");
 
-            //entity.Property(e => e.UserId).ValueGeneratedNever();
+            entity.Property(e => e.UserId).ValueGeneratedOnAdd();
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false);

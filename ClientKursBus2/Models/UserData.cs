@@ -11,7 +11,5 @@ namespace ClientKursBus2.Models
         public string? PassWord { get; set; }
 
         public int UserId { get; set; }
-
-        public string? UserName { get; set; }
     }
 }

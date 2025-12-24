@@ -38,7 +38,7 @@ namespace ClientKursBus2.Services
 
         public override async Task Delete(Schedule obj)
         {
-            using var response = await httpClient.DeleteAsync($"https://localhost:7114/api/Race/{obj.TripId}");
+            using var response = await httpClient.DeleteAsync($"https://localhost:7114/api/Schedule/{obj.TripId}");
 
         }
 
@@ -58,7 +58,7 @@ namespace ClientKursBus2.Services
             try
             {
                 JsonContent content = JsonContent.Create(obj);
-                using var response = await httpClient.PutAsync($"https://localhost:7114/api/Race/{obj.TripId}", content);
+                using var response = await httpClient.PutAsync($"https://localhost:7114/api/Schedule/{obj.TripId}", content);
                 string responseText = await response.Content.ReadAsStringAsync();
                 if (responseText != null)
                 {

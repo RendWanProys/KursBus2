@@ -17,7 +17,5 @@ namespace ClientKursBus2.Models
         public int? Price { get; set; }
 
         public int TripId { get; set; }
-
-        public int BusId { get; set; }
     }
 }

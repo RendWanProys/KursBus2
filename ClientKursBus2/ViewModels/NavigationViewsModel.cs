@@ -19,12 +19,15 @@ namespace ClientKursBus2.ViewModels
             set { _currentView = value; OnPropertyChanged(); }
         }
         public ICommand HomeCommand { get; set; }
+        public ICommand ScheduleCommand { get; set; }
         public ICommand RaceCommand { get; set; }
         private void HomeView(object obj) => CurrentView = new HomeViewModel();
+        private void ScheduleView(object obj) => CurrentView = new ScheduleViewModel();
         private void RaceView(object obj) => CurrentView = new RaceViewModel();
         public NavigationViewModel()
         {
             HomeCommand = new RelayCommand(HomeView);
+            ScheduleCommand = new RelayCommand(ScheduleView);
             RaceCommand = new RelayCommand(RaceView);
             CurrentView = new HomeViewModel();
         }

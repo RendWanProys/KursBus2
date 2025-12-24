@@ -1,6 +1,5 @@
 using KursBus2.Models;
 using KursBus2.Services;
-using KursBus2.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
