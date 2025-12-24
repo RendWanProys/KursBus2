@@ -43,7 +43,7 @@
                               Command="{Binding ScheduleCommand}"
                               IsChecked="True">
                         <Grid>
-                            <Image Source="/Assets/img_home.png"
+                            <Image Source="/Assets/Schedule.png"
                                    Style="{StaticResource Image_Style}" />
                             <TextBlock Text="Расписание"
                                        Style="{StaticResource Text_Style}" />
@@ -54,7 +54,7 @@
               Command="{Binding RaceCommand}"
               IsChecked="False">
                         <Grid>
-                            <Image Source="/Assets/book-open.png"
+                            <Image Source="/Assets/Bus.png"
                    Style="{StaticResource Image_Style}" />
                             <TextBlock Text="Рейсы"
                        Style="{StaticResource Text_Style}" />

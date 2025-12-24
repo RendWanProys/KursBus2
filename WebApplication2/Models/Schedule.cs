@@ -16,6 +16,4 @@ public partial class Schedule
     public int? Price { get; set; }
 
     public int TripId { get; set; }
-
-    public int BusId { get; set; }
 }
