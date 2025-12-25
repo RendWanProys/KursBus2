@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace ClientKursBus2.Views
 {
     /// <summary>
-    /// Логика взаимодействия для RaceView.xaml
+    /// Логика взаимодействия для ScheduleView.xaml
     /// </summary>
     public partial class ScheduleView : UserControl
     {

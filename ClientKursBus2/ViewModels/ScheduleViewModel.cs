@@ -43,9 +43,9 @@ namespace ClientKursBus2.ViewModels
         public ScheduleViewModel()
         {
             scheduleService = new ScheduleService();
-            Name();
+            Load();
         }
-        private void Name()
+        private void Load()
         {
             try
             {
@@ -72,7 +72,7 @@ namespace ClientKursBus2.ViewModels
                           if (window.ShowDialog() == true)
                           {
                               await scheduleService.Add(window.Schedules);
-                              Name();
+                              Load();
                           }
                       }
                       catch { }
@@ -109,7 +109,7 @@ namespace ClientKursBus2.ViewModels
                       if (result == MessageBoxResult.Yes)
                       {
                           await scheduleService.Delete(schedule);
-                          Name();
+                          Load();
                       }
                   }));
             }

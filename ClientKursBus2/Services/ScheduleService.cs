@@ -44,7 +44,7 @@ namespace ClientKursBus2.Services
 
         public override async Task<List<Schedule>> GetAll()
         {
-            return (await httpClient.GetFromJsonAsync<List<Schedule>>("https://localhost:7114/api/Schedule"))!;
+            return (await httpClient.GetFromJsonAsync<List<Schedule>>("https://localhost:7114/api/Schedule/"))!;
         }
 
 

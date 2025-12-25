@@ -15,6 +15,10 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <!--//
+            <ComboBox x:Name="NumberFlightsComboBox" Margin="10"
+                DisplayMemberPath="NumberFlight" SelectedValuePath="NumberFlight"
+                SelectedValue="{Binding NumberFlight}" />-->
         </Grid.RowDefinitions>
         <StackPanel Margin="0 5" Grid.Row="0">
             <Label Content="Введите номер Маршрута" Margin="20 0" Foreground="White"/>

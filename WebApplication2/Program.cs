@@ -44,6 +44,7 @@ builder.Services.AddSwaggerGen(options =>
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 builder.Services.AddDbContext<KursProjectContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddScoped<RaceService, RaceService>();
+builder.Services.AddScoped<ScheduleService, ScheduleService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters

@@ -42,7 +42,7 @@ namespace KursBus2.Controllers
             await RaceService.Update(chit);
             return Ok(chit);
         }
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await RaceService.Delete(id);

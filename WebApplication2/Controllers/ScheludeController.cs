@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KursBus2.Controllers
 {
-        [ApiController]
+    [ApiController]
     [Authorize]
     [Route("api/[controller]")]
     public class ScheduleController : ControllerBase
@@ -42,7 +42,7 @@ namespace KursBus2.Controllers
             await ScheduleService.Update(chit);
             return Ok(chit);
         }
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await ScheduleService.Delete(id);

@@ -17,6 +17,7 @@
     <None Remove="Assets\home_page.png" />
     <None Remove="Assets\img_customer.png" />
     <None Remove="Assets\img_home.png" />
+    <None Remove="Assets\Schedule.png" />
     <None Remove="Assets\search.png" />
     <None Remove="Assets\shutdown_def.png" />
     <None Remove="Assets\shutdown_mo.png" />
@@ -40,6 +41,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Schedule.png" />
     <Resource Include="Assets\search.png" />
     <Resource Include="Assets\shutdown_def.png" />
     <Resource Include="Assets\shutdown_mo.png" />

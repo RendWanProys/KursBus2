@@ -5,6 +5,9 @@
     <DataTemplate DataType="{x:Type vm:HomeViewModel}">
         <view:HomeView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:ScheduleViewModel}">
+        <view:ScheduleView/>
+    </DataTemplate>
     <DataTemplate DataType="{x:Type vm:RaceViewModel}">
         <view:RaceView/>
     </DataTemplate>
