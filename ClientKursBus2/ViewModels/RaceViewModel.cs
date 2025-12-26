@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace ClientKursBus2.ViewModels
 {
-    class RaceViewModel:ViewModelBase
+    class RaceViewModel : ViewModelBase
     {
         private RaceService raceService;
         private ObservableCollection<Race> raceList;
@@ -105,7 +105,7 @@ namespace ClientKursBus2.ViewModels
                   (deleteCommand = new RelayCommand(async obj =>
                   {
                       Race race = (obj as Race)!;
-                      MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить объект " + race!.Load + " " + race.Pass, "Удаление объекта", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                      MessageBoxResult result = MessageBox.Show($"Удалить рейс {race.RaceNumber}?", "Удаление объекта", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                       if (result == MessageBoxResult.Yes)
                       {
                           await raceService.Delete(race);
@@ -116,3 +116,4 @@ namespace ClientKursBus2.ViewModels
         }
     }
 }
+

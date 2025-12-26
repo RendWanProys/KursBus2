@@ -30,6 +30,17 @@ namespace ClientKursBus2.ViewModels
             }
         }
 
+        private string _peakLoad;
+        public string PeakLoad
+        {
+            get => _peakLoad;
+            set
+            {
+                _peakLoad = value;
+                OnPropertyChanged(nameof(PeakLoad));
+            }
+        }
+
         private Schedule selected;
         public Schedule Selected
         {
@@ -105,7 +116,7 @@ namespace ClientKursBus2.ViewModels
                   (deleteCommand = new RelayCommand(async obj =>
                   {
                       Schedule schedule = (obj as Schedule)!;
-                      MessageBoxResult result = MessageBox.Show("Вы действительно хотите удалить объект " + schedule!.Name + " " + schedule.Route, "Удаление объекта", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                      MessageBoxResult result = MessageBox.Show($"Удалить маршрут {schedule.TripNum}?", "Удаление объекта", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                       if (result == MessageBoxResult.Yes)
                       {
                           await scheduleService.Delete(schedule);

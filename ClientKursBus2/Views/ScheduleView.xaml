@@ -57,11 +57,12 @@
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Номер Маршрута" Width="Auto" Binding="{Binding TripId}"/>
-                        <DataGridTextColumn Header="Название Маршрута" Width="Auto" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="ID" Width="Auto" Binding="{Binding TripId}"/>
+                        <DataGridTextColumn Header="Номер маршрута" Width="Auto" Binding="{Binding TripNum}"/>
+                        <DataGridTextColumn Header="Время отправления" Width="Auto" Binding="{Binding ScheduleTime}"/>
+                        <DataGridTextColumn Header="Пассажиропоток" Width="Auto" Binding="{Binding PassTraf}"/>
+                        <DataGridTextColumn Header="Загруженность" Width="Auto" Binding="{Binding PeakLoad}"/>
                         <DataGridTextColumn Header="Цена билета" Width="Auto" Binding="{Binding Price}"/>
-                        <DataGridTextColumn Header="Время отправления" Width="Auto" Binding="{Binding TimeDepar}"/>
-                        <DataGridTextColumn Header="Время прибытия" Width="Auto" Binding="{Binding TimeArrival}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

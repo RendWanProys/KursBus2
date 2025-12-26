@@ -6,8 +6,12 @@
         xmlns:local="clr-namespace:ClientKursBus2.Views"
         mc:Ignorable="d"
         Background="#333"
-        Title="Добавление рейса" Height="590" Width="400">
+        Title="Добавление рейса" Height="680" Width="400">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="369*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -15,39 +19,70 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <!--//
-            <ComboBox x:Name="NumberFlightsComboBox" Margin="10"
-                DisplayMemberPath="NumberFlight" SelectedValuePath="NumberFlight"
-                SelectedValue="{Binding NumberFlight}" />-->
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
         </Grid.RowDefinitions>
-        <StackPanel Margin="0 5" Grid.Row="0">
-            <Label Content="Введите номер Маршрута" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="TripNum" Text="{Binding TripId}" Margin="20 0"/>
+
+        <StackPanel Margin="0,5,0,5" Grid.Row="0" Grid.ColumnSpan="2">
+            <Label Content="Введите Номер рейса" Margin="20 0" Foreground="White"/>
+            <TextBox x:Name="RaceNums" Text="{Binding RaceNumber}" Margin="20 8"/>
         </StackPanel>
-        <StackPanel Margin="0 5" Grid.Row="1">
-            <Label Content="Введите Колличесвто Мест" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="Spots" Text="{Binding Pass}" Grid.Row="1" Margin="20 15"/>
+
+        <StackPanel Margin="0,5,0,5" Grid.Row="1" Grid.ColumnSpan="2">
+            <Label Content="Введите номер Маршрут" Margin="20 0" Foreground="White"/>
+            <ComboBox x:Name="NumberFlightsComboBox" 
+                      DisplayMemberPath="TripNum"
+                      SelectedValuePath="TripNum"
+                      SelectedValue="{Binding TripId}"
+                      Margin="20 8"/>
         </StackPanel>
-        <StackPanel Margin="0 5" Grid.Row="2">
-            <Label Content="Введите Колличество Купленных Билетов" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="Ticket" Text="{Binding Load}" Grid.Row="2" Margin="20 15"/>
+
+        <StackPanel Margin="0,5,0,5" Grid.Row="2" Grid.ColumnSpan="2">
+            <Label Content="Введите дату рейса" Margin="20 0" Foreground="White"/>
+            <TextBox x:Name="SelectedDate" Text="{Binding RaceData}" Margin="20 8"/>
         </StackPanel>
-        <StackPanel Margin="0 5" Grid.Row="3">
-            <Label Content="Введите Расход Топлива" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="Benzin" Text="{Binding Circulation}" Grid.Row="3" Margin="20 15"/>
+
+        <StackPanel Margin="0,5,0,5" Grid.Row="3" Grid.ColumnSpan="2">
+            <Label Content="Введите Время рейса" Margin="20 0" Foreground="White"/>
+            <TextBox Text="{Binding RaceTime}" Margin="20 8">
+                <TextBox.ToolTip>
+                    <ToolTip Content="Формат: ЧЧ:мм (08:30, 14:45)"/>
+                </TextBox.ToolTip>
+            </TextBox>
         </StackPanel>
-        <StackPanel Margin="0 5" Grid.Row="4">
-            <Label Content="Введите Прибыль" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="Profit" Text="{Binding Profit}" Grid.Row="4" Margin="20 15"/>
+
+        <StackPanel Margin="0,5,0,5" Grid.Row="4" Grid.ColumnSpan="2">
+            <Label Content="Введите колличество купленных билетов" Margin="20 0" Foreground="White"/>
+            <TextBox x:Name="Load" Text="{Binding Load}" Grid.Row="3" Margin="20 8"/>
         </StackPanel>
-        <Grid Grid.Row="5">
+
+        <StackPanel Margin="0,5,0,5" Grid.Row="5" Grid.ColumnSpan="2">
+            <Label Content="Введите прибыль" Margin="20 0" Foreground="White"/>
+            <TextBox x:Name="Profit" Text="{Binding Profit}" Grid.Row="4" Margin="20 8"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,5,0,5" Grid.Row="6" Grid.ColumnSpan="2">
+            <Label Content="Загруженность" Margin="20 0" Foreground="White"/>
+            <ComboBox 
+                SelectedValue="{Binding Circulation}" 
+                SelectedValuePath="Content"
+                Margin="20 5">
+                <ComboBoxItem Content="Низкая"/>
+                <ComboBoxItem Content="Средняя"/>
+                <ComboBoxItem Content="Высокая"/>
+                <ComboBoxItem Content="Очень Высокая"/>
+            </ComboBox>
+        </StackPanel>
+
+        <Grid Grid.Row="7" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="OK" Grid.Column="0" Margin="20 10" Height="50" Click="Button_Click"
+            <Button Content="Сохранить" Grid.Column="0" Margin="20 10" Height="50" Click="Button_Click"
                     Style="{StaticResource DialogStyle}"/>
-            <Button Content="Cancel" Grid.Column="1" Margin="20 10" Height="50" Click="Button_Click_1"
+            <Button Content="Отмена" Grid.Column="1" Margin="20 10" Height="50" Click="Button_Click_1"
                     Style="{StaticResource DialogStyle}"/>
         </Grid>
     </Grid>

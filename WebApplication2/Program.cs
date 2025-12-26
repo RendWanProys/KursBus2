@@ -41,8 +41,13 @@ builder.Services.AddSwaggerGen(options =>
         });
 });
 
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
-builder.Services.AddDbContext<KursProjectContext>(opt => opt.UseSqlServer(connectionString));
+//string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+//builder.Services.AddDbContext<KursProjectContext>(opt => opt.UseSqlServer(connectionString));
+builder.Services.AddDbContext<KursProjectContext>(opt =>
+    opt.UseSqlite("Data Source=KursProject.db"));
+
+
+
 builder.Services.AddScoped<RaceService, RaceService>();
 builder.Services.AddScoped<ScheduleService, ScheduleService>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

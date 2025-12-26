@@ -1,4 +1,5 @@
 ﻿using ClientKursBus2.Models;
+using ClientKursBus2.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +19,19 @@ namespace ClientKursBus2.Views
     public partial class AddEditRace : Window
     {
         public Race Races { get;  private set; }
+        private ScheduleService _scheduleService;
         public AddEditRace(Race _race)
         {
             InitializeComponent();
             Races = _race;
             DataContext = Races;
+            _scheduleService= new ScheduleService();
+            Loads();
         }
-
+        private async Task Loads()
+        {
+            NumberFlightsComboBox.ItemsSource = await _scheduleService.GetAll();
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = true;

@@ -33,12 +33,12 @@ namespace KursBus2.Controllers
         public async Task<ActionResult<Schedule>> CreateSchedule([FromBody] Schedule chit)
         {
             await ScheduleService.Create(chit);
-            return CreatedAtAction(nameof(GetScheduleById), new { Id = chit.Route }, chit);
+            return CreatedAtAction(nameof(GetScheduleById), new { Id = chit.TripId }, chit);
         }
         [HttpPut("{id}")]
         public async Task<ActionResult<Schedule>> UpdateSchedule(int id, [FromBody] Schedule chit)
         {
-            if (chit.Route != id) return BadRequest();
+            if (chit.TripId != id) return BadRequest();
             await ScheduleService.Update(chit);
             return Ok(chit);
         }

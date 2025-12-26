@@ -17,11 +17,13 @@
     <Grid>
         <Border CornerRadius="0,20,20,0" Margin="0,5,5,0">
             <Grid Margin="15">
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="9*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
+                
                 <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button Style="{StaticResource ToolBarButtonBaseStyle}"
                             Command="{Binding AddCommand}" Width="30"
@@ -35,6 +37,7 @@
                         <Image Source="/Assets/Del.png"/>
                     </Button>
                 </StackPanel>
+                
                 <DataGrid ItemsSource="{Binding RaceList}"
                           AutoGenerateColumns="False"
                           Grid.Row="1" IsReadOnly="True"
@@ -57,11 +60,13 @@
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Номер рейса" Width="Auto" Binding="{Binding TripId}"/>
-                        <DataGridTextColumn Header="Колличество Мест" Width="Auto" Binding="{Binding Pass}"/>
-                        <DataGridTextColumn Header="Загрузка" Width="Auto" Binding="{Binding Load}"/>
-                        <DataGridTextColumn Header="Расход топлива" Width="Auto" Binding="{Binding Circulation}"/>
+                        <DataGridTextColumn Header="Номер рейса" Width="Auto" Binding="{Binding RaceNumber}"/>
+                        <DataGridTextColumn Header="Маршрут" Width="Auto" Binding="{Binding TripId}"/>
+                        <DataGridTextColumn Header="Дата" Width="Auto" Binding="{Binding RaceData}"/>
+                        <DataGridTextColumn Header="Время" Width="Auto" Binding="{Binding RaceTime}"/>
+                        <DataGridTextColumn Header="Билеты" Width="Auto" Binding="{Binding Load}"/>
                         <DataGridTextColumn Header="Прибыль" Width="Auto" Binding="{Binding Profit}"/>
+                        <DataGridTextColumn Header="Загруженность" Width="Auto" Binding="{Binding Circulation}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

@@ -16,34 +16,53 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Margin="0 5" Grid.Row="0">
-            <Label Content="Введите Название Маршрута" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="Names" Text="{Binding Name}" Margin="20 0"/>
-        </StackPanel>
-        <StackPanel Margin="0 5" Grid.Row="1">
+        
+        <StackPanel Margin="0 5 0 5" Grid.Row="0">
             <Label Content="Введите Номер Маршрута" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="TripIds" Text="{Binding TripId}" Grid.Row="1" Margin="20 15"/>
+            <TextBox  Text="{Binding TripNum}" Margin="20 15"/>
         </StackPanel>
-        <StackPanel Margin="0 5" Grid.Row="2">
-            <Label Content="Введите Колличество Цену Билетов" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="Prices" Text="{Binding Price}" Grid.Row="2" Margin="20 15"/>
+        
+        <StackPanel Margin="0 5 0 5" Grid.Row="1">
+            <Label Content="Введите Время отправления" Margin="20 0" Foreground="White"/>
+            <TextBox  Text="{Binding ScheduleTime}" Grid.Row="1" Margin="20 15">
+                <TextBox.ToolTip>
+                    <ToolTip Content="Формат: ЧЧ:мм (08:00, 14:30)"/>
+                </TextBox.ToolTip>
+            </TextBox>
         </StackPanel>
+        
+        <StackPanel Margin="0 5 0 5" Grid.Row="2">
+            <Label Content="Введите Пассажиропоток Людей В День" Margin="20 0" Foreground="White"/>
+            <TextBox  Text="{Binding PassTraf}" Grid.Row="2" Margin="20 15"/>
+        </StackPanel>
+        
         <StackPanel Margin="0 5" Grid.Row="3">
-            <Label Content="Введите Время Отправления" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="TimeDeparы" Text="{Binding TimeDepar}" Grid.Row="3" Margin="20 15"/>
+            <Label Content="Введите Загруженность маршрута" Margin="20 0" Foreground="White"/>
+            <ComboBox 
+                SelectedValue="{Binding PeakLoad}"
+                SelectedValuePath="Content"
+                Margin="20 15">
+                <ComboBoxItem Content="Низкая"/>
+                <ComboBoxItem Content="Средняя"/>
+                <ComboBoxItem Content="Высокая"/>
+                <ComboBoxItem Content="Очень Высокая"/>
+            </ComboBox>
         </StackPanel>
+        
         <StackPanel Margin="0 5" Grid.Row="4">
-            <Label Content="Введите Время Прибытия" Margin="20 0" Foreground="White"/>
-            <TextBox x:Name="TimeArrivalы" Text="{Binding TimeArrival}" Grid.Row="4" Margin="20 15"/>
+            <Label Content="Введите Цену билета" Margin="20 0" Foreground="White"/>
+            <TextBox  Text="{Binding Price}" Grid.Row="4" Margin="20 15"/>
         </StackPanel>
+        
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="OK" Grid.Column="0" Margin="20 10" Height="50" Click="Button_Click"
+            
+            <Button Content="Сохранить" Grid.Column="0" Margin="20 10" Height="50" Click="Button_Click"
                     Style="{StaticResource DialogStyle}"/>
-            <Button Content="Cancel" Grid.Column="1" Margin="20 10" Height="50" Click="Button_Click_1"
+            <Button Content="Отмена" Grid.Column="1" Margin="20 10" Height="50" Click="Button_Click_1"
                     Style="{StaticResource DialogStyle}"/>
         </Grid>
     </Grid>
