@@ -24,7 +24,7 @@ namespace KursBus2.Services
             if (entity.TripId.HasValue && entity.TripId > 0)
             {
                 var scheduleExists = await db.Schedules
-                    .AnyAsync(s => s.TripId == entity.TripId);
+                    .AnyAsync(s => s.TripNum == entity.TripId);
 
                 if (!scheduleExists)
                     throw new ArgumentException($"Маршрут с ID {entity.TripId} не найден");

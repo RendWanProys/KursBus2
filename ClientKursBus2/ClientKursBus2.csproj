@@ -14,9 +14,9 @@
     <None Remove="Assets\book-open.png" />
     <None Remove="Assets\Bus.png" />
     <None Remove="Assets\Del.png" />
-    <None Remove="Assets\home_page.png" />
     <None Remove="Assets\img_customer.png" />
     <None Remove="Assets\img_home.png" />
+    <None Remove="Assets\page.png" />
     <None Remove="Assets\Schedule.png" />
     <None Remove="Assets\search.png" />
     <None Remove="Assets\shutdown_def.png" />
@@ -29,8 +29,9 @@
     <Resource Include="Assets\block.png" />
     <Resource Include="Assets\book-open.png" />
     <Resource Include="Assets\Bus.png" />
+	<Resource Include="Assets\page.png" />
     <Resource Include="Assets\Del.png" />
-    <Resource Include="Assets\home_page.png" />
+    <Resource Include="Assets\home_page1.png" />
     <Resource Include="Assets\img_customer.png" />
     <Resource Include="Assets\img_home.png" />
   </ItemGroup>

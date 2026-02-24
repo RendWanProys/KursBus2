@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ClientKursBus2.Views"
         mc:Ignorable="d"
         Background="#333"
-        Title="Добавление Рассписания" Height="590" Width="400">
+        Title="Добавление Расписания" Height="590" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

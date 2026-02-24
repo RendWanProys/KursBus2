@@ -63,9 +63,13 @@
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="67*"/>
+                    <RowDefinition Height="58*"/>
+                </Grid.RowDefinitions>
 
                 <ContentControl x:Name="Pages"
-                         Content="{Binding CurrentView}" />
+                         Content="{Binding CurrentView}" Grid.RowSpan="2" />
 
             </Grid>
         </Grid>
