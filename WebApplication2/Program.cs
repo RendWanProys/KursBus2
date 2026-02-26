@@ -41,10 +41,10 @@ builder.Services.AddSwaggerGen(options =>
         });
 });
 
-//string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
-//builder.Services.AddDbContext<KursProjectContext>(opt => opt.UseSqlServer(connectionString));
-builder.Services.AddDbContext<KursProjectContext>(opt =>
-    opt.UseSqlite("Data Source=KursProject.db"));
+string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
+builder.Services.AddDbContext<KursProjectContext>(opt => opt.UseSqlServer(connectionString));
+//builder.Services.AddDbContext<KursProjectContext>(opt =>
+    //opt.UseSqlite("Data Source=KursProject.db"));
 
 
 
